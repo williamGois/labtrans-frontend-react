@@ -78,4 +78,14 @@ O token recebido da Auth API e enviado para a Reservations API em todas as chama
 Authorization: Bearer <token>
 ```
 
+Todas as chamadas Axios tambem enviam `X-Correlation-ID`. Se uma API retornar `correlationId`, a UI mostra `Codigo de suporte: <correlationId>` junto da mensagem amigavel de erro.
+
+## Observabilidade e Diagnostico
+
+- Auth API: `http://localhost:5001/health/live`, `/health/ready`, `/metrics`.
+- Reservations API: `http://localhost:8000/health/live`, `/health/ready`, `/metrics`.
+- Runbook do front-end: `docs/OPERATIONS.md`.
+- Decisao de diagnostico: `docs/ADR-001-observability-strategy.md`.
+- Relatorio: `OBSERVABILITY_REPORT.md`.
+
 O Dockerfile usa `node:22-alpine` no build e Nginx para servir os arquivos estaticos.
