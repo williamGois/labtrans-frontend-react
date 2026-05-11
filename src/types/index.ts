@@ -60,6 +60,8 @@ export interface ReservationPayload {
 
 export interface ApiErrorBody {
   message?: string
+  detail?: string
+  correlationId?: string
   conflictingReservationId?: number
   details?: unknown
 }

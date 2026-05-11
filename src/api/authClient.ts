@@ -1,9 +1,12 @@
 import axios from 'axios'
 import type { AuthResponse, User } from '../types'
+import { ensureCorrelationIdHeader } from '../utils/correlation'
 
 const authApi = axios.create({
   baseURL: import.meta.env.VITE_AUTH_API_URL ?? 'http://localhost:5001',
 })
+
+authApi.interceptors.request.use(ensureCorrelationIdHeader)
 
 export interface AuthPayload {
   email: string

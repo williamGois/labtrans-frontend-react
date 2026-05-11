@@ -1,9 +1,12 @@
 import axios from 'axios'
 import type { Location, Reservation, ReservationPayload, Room } from '../types'
+import { ensureCorrelationIdHeader } from '../utils/correlation'
 
 const reservationsApi = axios.create({
   baseURL: import.meta.env.VITE_RESERVATIONS_API_URL ?? 'http://localhost:8000',
 })
+
+reservationsApi.interceptors.request.use(ensureCorrelationIdHeader)
 
 function authConfig(token: string) {
   return {
