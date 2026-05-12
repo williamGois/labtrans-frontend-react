@@ -12,6 +12,7 @@ Aplicacao React TypeScript para login, cadastro e gestao de reservas consumindo 
 - React Hook Form
 - Lucide React
 - Vitest + Testing Library
+- Playwright
 
 ## Variaveis
 
@@ -53,8 +54,18 @@ http://localhost:5173
 npm run lint
 npm run typecheck
 npm run test
+npm run e2e
 npm run build
 npm audit
+```
+
+Para rodar o Playwright contra o stack Docker completo ja ativo:
+
+```powershell
+npx playwright install chromium
+$env:PLAYWRIGHT_SKIP_WEB_SERVER='1'
+$env:PLAYWRIGHT_BASE_URL='http://localhost:5173'
+npm run e2e
 ```
 
 ## Telas e Fluxos
@@ -63,6 +74,8 @@ npm audit
 - Armazenamento do JWT em `localStorage`.
 - Rotas protegidas sem token redirecionam para login.
 - Listagem de reservas.
+- Filtros por local, sala, periodo e busca textual.
+- Visao de agenda por dia alem da tabela.
 - Criacao e edicao de reservas.
 - Filtro de salas por local.
 - Confirmacao antes de excluir.
